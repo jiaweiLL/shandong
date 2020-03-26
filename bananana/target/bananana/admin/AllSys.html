@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jslib/jquery-3.1.1.min.js"></script>
+    <script src="../js/SysAll.js"></script>
+<!--    <script type="text/javascript">-->
+<!--        $(function () {-->
+
+<!--            window.onload = function(){-->
+<!--                var arr = document.getElementsByTagName('button');-->
+<!--                for(var i = 0;i<arr.length;i++){-->
+<!--                    arr[i].onclick = function(){-->
+<!--                        alert(this.id)-->
+<!--                        var idBtn=this.id;-->
+<!--                        $.post(-->
+<!--                            "../news?methd=ChangeRole&id="+idBtn,-->
+<!--                            $("#chForm").serialize(),-->
+<!--                            function (responseData) {-->
+<!--                                console.log(responseData)-->
+<!--                                var resultObj = JSON.parse(responseData);-->
+<!--                                alert(resultObj.errorMsg);-->
+<!--                                if (resultObj.errorCode == 0){-->
+<!--                                    location.href = "AllSys.html";-->
+<!--                                }-->
+
+<!--                            }-->
+<!--                        );-->
+<!--                    }-->
+<!--                }-->
+<!--            }-->
+
+<!--        })-->
+
+<!--    </script>-->
+
+</head>
+<body>
+<form id="chForm">
+<table id="showData" border="2">
+    <thead>
+    <tr align="center">
+        <th>序号</th>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>权限</th>
+        <th>更改权限</th>
+    </tr>
+    </thead>
+    <tbody id="SysBody">
+    </tbody>
+</table>
+</form>
+<h3>
+    总共<span id="showRowCount"></span>条记录，共有<span id="showPageCount"></span>页；
+    当前<span id="showPage"></span>页，每页<span id="showSize"></span>条记录
+</h3>
+<h3>
+    <a href="javascript:void(0)" id="aUp">上一页</a>
+    <a href="javascript:void(0)" id="aDown">下一页</a>
+</h3>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jslib/jquery-3.1.1.min.js"></script>
+    <script src="../jslib/jquery.cookie.js"></script>
+    <script src="../js/shop.js"></script>
+    <script>
+        var start = 1 ;
+        $(function(){
+            $("#header").load("../commen/header.html");
+            $("#content").load("../commen/content.html");
+            $("#footer").load("../commen/footer.html");
+            var img=parseUrl()
+            //+
+            var href="http://localhost:8090/bananana/img/";
+            // // alert(href);
+            // window.alert(img['title']);
+            href=href+img['title'];
+            document.getElementById("img").src =href;
+            document.getElementById("num").innerHTML=start;
+            sessionStorage.setItem('num', start)
+            sessionStorage.setItem('img', img['title']);
+        });
+
+        function up(){
+            start+= 1;
+            document.getElementById("num").innerHTML=start;
+            sessionStorage.removeItem('num');
+            sessionStorage.setItem('num', start)
+        }
+        function down(){
+            if(start == 1) {
+                return ;
+            }
+            start -= 1;
+            document.getElementById("num").innerHTML=start;
+            sessionStorage.removeItem('num');
+            sessionStorage.setItem('num', start);
+        }
+        function parseUrl(){
+            var url=location.href;
+            var i=url.indexOf('?');
+            if(i==-1)return;
+            var querystr=url.substr(i+1);
+            var arr1=querystr.split('&');
+            var arr2=new Object();
+            for  (i in arr1){
+                var ta=arr1[i].split('=');
+                arr2[ta[0]]=ta[1];
+            }
+            return arr2;
+        }
+    </script>
+    <style>
+         .myimg img{max-width:190px}
+
+    </style>
+</head>
+<body>
+<div id="header">header</div>
+    <div align="center" style="margin-top: 50px">
+        <div class="myimg">
+            <img src="http://localhost:8090/bananana/img/01.png" id="img">
+        </div>
+        <form  id="addshopForm"  method="post">
+        <div>
+            <button type="button"  onclick='down()'>减</button>
+            <span id="num"></span>
+            <button type="button"  onclick="up()">加</button>
+        </div>
+
+        <div>
+<!--            <input type="submit" value="加入购物车">-->
+            <BUTTON type="button" id="add">加入购物车</BUTTON>
+            <a type="button" href="pay.html" id="shop">结算</a>
+        </div>
+        </form>
+    </div>
+<div id="footer">header</div>
+</body>
+</html>

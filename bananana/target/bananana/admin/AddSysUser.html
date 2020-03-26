@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <script src="../jslib/jquery-3.1.1.min.js"></script>-->
+    　<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#addloginBtn").click(function(){
+                $.post(
+                    "../sys?method=addSys" ,
+                    $("#addloginForm").serialize() ,
+                    function(responseData) {
+                        console.log(responseData) ;
+                        var resultObj = JSON.parse(responseData) ;
+
+                        alert(resultObj.errorMsg) ;
+                        if(resultObj.errorCode == 0) {
+                            location.href="../admin/ManagerIndex.html" ;
+                        }
+                    }
+                );
+            });
+        })
+    </script>
+
+</head>
+<body>
+<h3>增加管理员</h3>
+<form  id="addloginForm" method="post">
+    <p>账号<input type="text" name="addsysname"/> </p>
+    <p>密码<input type="text" name="addsyspass"/> </p>
+    <p><button type="button" id="addloginBtn">登录</button>
+<!--    <input type="submit" value="增加">-->
+        <button type="reset">取消</button></p>
+</form>
+</body>
+</html>

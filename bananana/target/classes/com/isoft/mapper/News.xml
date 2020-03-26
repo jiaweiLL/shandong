@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 的namespace的值不指向任何的java类 -->
+<mapper namespace="com.isoft.dao.NewsDao">
+    <insert id="addnewstype">
+        insert into tb_newstype values(null,#{typename},#{desc})
+    </insert>
+
+    <insert id="Addnews">
+        insert into tb_news(typeid,title,content,adddatetime) values (#{typeid},#{title},#{content},#{adddatetime})
+    </insert>
+
+    <select id="selectnews" resultType="com.isoft.entity.NewsType">
+        select * from tb_newstype
+    </select>
+    <select id="selectAllNews" resultType="com.isoft.entity.NewsType">
+        select * from tb_news
+    </select>
+    <select id="getpay" resultType="com.isoft.entity.shop">
+        select * from tb_shop
+        where name=#{name}
+    </select>
+    <sql id="whereCon">
+        <where>
+            <if test="null!=titleKey">
+                <bind name="title" value="'%'+titleKey+'%'"/>
+                and title like #{title}
+            </if>
+            <if test="null!=typeid">
+                and typeid=#{typeid}
+            </if>
+        </where>
+    </sql>
+    <!--
+        List<News> getPageData(@Param("titleKey")String titleKey , @Param("typeId")Integer typeId , @Param("offset")Integer offset , @Param("rows")Integer rows) ;
+    -->
+    <select id="getPageData" resultType="com.isoft.entity.News">
+        select * from tb_news
+        <include refid="whereCon"></include>
+        order by id
+        limit ${offset} , ${rows}
+    </select>
+    <!--
+        int getRowCount(@Param("titleKey")String titleKey , @Param("typeId")Integer typeId) ;
+    -->
+    <select id="getRowCount" resultType="int">
+        select count(*) from tb_news
+        <include refid="whereCon"></include>
+    </select>
+</mapper>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jslib/jquery-3.1.1.min.js"></script>
+    <script src="../js/addnews.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $("#addNewsBtn").click(function () {
+                $.post(
+                    "../news?method=AddNews",
+                    $("#addNewsForm").serialize(),
+                    function (responseData) {
+                        console.log(responseData)
+                        var resultObj = JSON.parse(responseData);
+                        alert(resultObj.errorMsg);
+                        if (resultObj.errorCode == 0){
+                            location.href = "ManagerIndex.html";
+                        }
+
+                    }
+                );
+
+            });
+        })
+    </script>
+</head>
+<body>
+<h3>增加新闻</h3>
+<form  id="addNewsForm" method="post">
+    <p>新闻<input type="text" name="title"/> </p>
+    <p>描述<input type="text" name="content"/> </p>
+    <p>
+        <select id="showtype" name="id">
+        </select>
+    </p>
+    <p><button type="button" id="addNewsBtn">确定</button>
+        <!--    <input type="submit" value="增加">-->
+        <button type="reset">取消</button></p>
+</form>
+</body>
+</html>
