@@ -1,0 +1,3 @@
+[console_scripts]
+hub = hub:cli
+

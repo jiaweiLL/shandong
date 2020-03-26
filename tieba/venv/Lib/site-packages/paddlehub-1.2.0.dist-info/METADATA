@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: paddlehub
+Version: 1.2.0
+Summary: A toolkit for managing pretrained models of PaddlePaddle and helping user getting started with transfer learning more efficiently.
+Home-page: https://github.com/PaddlePaddle/PaddleHub
+Author: PaddlePaddle Author
+Author-email: paddle-dev@baidu.com
+License: Apache 2.0
+Keywords: paddlehub paddlepaddle fine-tune transfer-learning
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: six (>=1.10.0)
+Requires-Dist: protobuf (>=3.1.0)
+Requires-Dist: pyyaml
+Requires-Dist: Pillow
+Requires-Dist: requests
+Requires-Dist: tb-paddle
+Requires-Dist: tb-nightly
+Requires-Dist: cma (==2.7.0)
+Requires-Dist: numpy
+Requires-Dist: pandas
+
+UNKNOWN
+
+
